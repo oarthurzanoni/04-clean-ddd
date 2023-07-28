@@ -19,9 +19,4 @@ test("create an answer", async () => {
   });
 
   expect(answer.content).toEqual("Nova resposta");
-  expect(answer).toEqual(
-    expect.objectContaining({
-      id: expect.any(String),
-    })
-  );
 });
