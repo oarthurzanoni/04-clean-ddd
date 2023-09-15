@@ -13,7 +13,7 @@ export function makeQuestion(
   const question = Question.create(
     {
       slug: Slug.create("example-question"),
-      authorId: new UniqueEntityID("1"),
+      authorId: new UniqueEntityID(),
       title: faker.lorem.sentence(),
       content: faker.lorem.text(),
       ...override,
