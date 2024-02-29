@@ -1,4 +1,4 @@
-import { makeQuestion } from "test/factories/makeQuestion";
+import { makeQuestion } from "test/factories/make-question";
 import { InMemoryQuestionCommentsRepository } from "test/repositories/in-memory-question-comments-repository";
 import { InMemoryQuestionsRepository } from "test/repositories/in-memory-questions-repository";
 import { CommentOnQuestionUseCase } from "./comment-on-question";
