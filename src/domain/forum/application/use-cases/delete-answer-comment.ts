@@ -20,7 +20,7 @@ export class DeleteAnswerCommentUseCase {
     );
 
     if (!answerComment) {
-      return left("Answer comment not found.");
+      return left("Answer comment not found");
     }
 
     if (answerComment.authorId.toString() !== authorId) {
