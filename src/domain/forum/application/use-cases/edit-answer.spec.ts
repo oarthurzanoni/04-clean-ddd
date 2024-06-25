@@ -2,6 +2,7 @@ import { UniqueEntityID } from "@/core/entities/unique-entity-id";
 import { makeAnswer } from "test/factories/make-answer";
 import { InMemoryAnswersRepository } from "test/repositories/in-memory-answers-repository";
 import { EditAnswerUseCase } from "./edit-answer";
+import { ResourceNotFoundError } from "./errors/resource-not-found-error";
 
 let answersRepository: InMemoryAnswersRepository;
 let sut: EditAnswerUseCase;
@@ -43,12 +44,13 @@ describe("Edit Answer", () => {
 
     await answersRepository.create(newAnswer);
 
-    expect(() => {
-      return sut.execute({
-        answerId: "answer-2",
-        authorId: "author-1",
-        content: "Conteúdo teste",
-      });
-    }).rejects.toBeInstanceOf(Error);
+    const result = await sut.execute({
+      answerId: "answer-2",
+      authorId: "author-1",
+      content: "Conteúdo teste",
+    });
+
+    expect(result.isLeft()).toBe(true);
+    expect(result.value).toBeInstanceOf(ResourceNotFoundError);
   });
 });
